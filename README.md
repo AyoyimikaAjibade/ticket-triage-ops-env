@@ -1,6 +1,6 @@
 # 🎫 Ticket Triage Operations Environment
 
-> **A production-grade reinforcement learning environment for optimizing engineering ticket management**
+> **A reinforcement learning environment for optimizing engineering ticket management**
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -17,7 +17,7 @@
 - **Improve team efficiency** by modeling context switching, regressions, and realistic work dynamics
 - **Enable reproducible research** with deterministic, fully-tested simulation
 
-This isn't a toy project—it's a **production-ready environment** designed for serious RL research and operational optimization.
+This is a **production-ready environment** designed for serious RL research and operational optimization.
 
 ---
 
@@ -25,11 +25,11 @@ This isn't a toy project—it's a **production-ready environment** designed for 
 
 ### The Problem
 Most reinforcement learning environments are either:
-- **Too simplistic** (toy problems that don't reflect reality)
+- **Too simplistic** (an uneffective problems that don't reflect reality)
 - **Non-reproducible** (results can't be verified or replicated)
 - **Poorly tested** (bugs go undetected, breaking research)
 
-### Our Solution
+### My Solution
 A **deterministic, testable, production-grade** environment that:
 - ✅ Models realistic engineering operations (SLAs, dependencies, regressions, context switching)
 - ✅ Guarantees reproducibility (same seed + actions = identical results)
@@ -229,7 +229,6 @@ algo = config.build()
 
 ## 📚 Documentation
 
-- **[Project Deep Dive](PROJECT_EXPLANATION.md)** - Comprehensive technical documentation
 - **[API Reference](envfoundry_ticket_triage/)** - Source code with docstrings
 - **[Examples](tests/)** - Test files demonstrate usage patterns
 

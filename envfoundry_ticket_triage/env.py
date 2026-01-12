@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict
-from typing import Any, Dict, Optional, Tuple
+from typing import Dict, Optional
 
 import gymnasium as gym
 import numpy as np
@@ -246,7 +246,6 @@ class TicketTriageEnv(gym.Env):
 
     # -------- Actions --------
     def _apply_action(self, action: int, rb: Dict[str, float]) -> None:
-        K = self.cfg.max_tickets
         N = self.cfg.n_engineers
 
         if action == 0:

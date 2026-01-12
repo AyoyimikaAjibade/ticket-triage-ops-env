@@ -35,7 +35,6 @@ def rollout(seed: int, steps: int, out: Path) -> None:
             ticket_i = max(ages, key=lambda x: x[1])[0]
             engineer_j = idle_engs[0]
             # encode ASSIGN
-            K = env.cfg.max_tickets
             N = env.cfg.n_engineers
             action = 1 + ticket_i * N + engineer_j
 
