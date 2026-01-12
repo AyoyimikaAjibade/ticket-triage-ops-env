@@ -1,0 +1,2 @@
+[console_scripts]
+ticket-triage = envfoundry_ticket_triage.cli:main

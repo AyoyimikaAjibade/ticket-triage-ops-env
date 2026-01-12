@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel", "packaging>=24.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "envfoundry-ticket-triage"
+version = "0.1.0"
+description = "A deterministic, testable Gymnasium RL environment modeling engineering ticket triage operations."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "gymnasium>=0.29.1",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "ruff>=0.4.0",
+]
+
+[project.scripts]
+ticket-triage = "envfoundry_ticket_triage.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

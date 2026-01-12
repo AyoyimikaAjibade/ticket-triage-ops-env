@@ -1,0 +1,63 @@
+Metadata-Version: 2.4
+Name: envfoundry-ticket-triage
+Version: 0.1.0
+Summary: A deterministic, testable Gymnasium RL environment modeling engineering ticket triage operations.
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: gymnasium>=0.29.1
+Requires-Dist: numpy>=1.24
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"
+Requires-Dist: ruff>=0.4.0; extra == "dev"
+
+# Ticket Triage Ops Environment (Gymnasium)
+
+A deterministic, testable reinforcement learning environment that simulates an engineering/support ticket backlog.
+This is designed as an **environment-as-a-product**: clean API, reproducible runs, unit tests, and a CLI.
+
+## Why this matters
+Many RL results fail to transfer because environments are toy problems or are not reproducible.
+This project focuses on **engineering realism** (backlog + SLAs + regressions + context switching) and **strong software fundamentals**:
+- deterministic simulation (seeded RNG)
+- explicit reward breakdown in `info`
+- unit tests for determinism + contract correctness
+- CLI tools for rollout + validation
+
+## Environment summary
+**State (observation):**
+- Open tickets with severity, age, component, SLA due-in, dependencies, blocked status, remaining work
+- Engineers with busy/idle state and current assignment
+- Global signals (time step, backlog size, avg age, SLA breaches, resolved count)
+
+**Actions:**
+- assign(ticket, engineer)
+- escalate(ticket)
+- request_info(ticket)
+- defer(ticket)
+- swarm(ticket)
+- noop
+
+**Dynamics:**
+- new tickets arrive stochastically
+- engineers progress work each step
+- small probability of regressions (work increases)
+- request_info blocks a ticket for a short delay
+
+**Rewards (see `info["reward_breakdown"]`):**
+- + for resolved tickets
+- - for SLA breaches
+- - for idle engineers while backlog exists
+- - for context switching (reassignments)
+- small costs for escalate / request_info / defer / swarm
+
+**Termination:**
+- truncated at a fixed horizon (end of week)
+- early termination if ticket load explodes (safety condition)
+
+## Installation
+Requires Python 3.10+.
+
+```bash
+git clone <your-repo-url>
+cd ticket-triage-ops-env
+pip install -e ".[dev]"
